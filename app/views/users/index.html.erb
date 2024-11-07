@@ -1,2 +1,22 @@
 <h1>Users#index</h1>
 <p>Find me in app/views/users/index.html.erb</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Created At</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
