@@ -1,0 +1,28 @@
+<h1>Users#index</h1>
+<%= link_to "Create New User", new_user_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Balance</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+
+        <td>
+           <%= link_to user.id, user_path(user) %>
+        </td>
+        <td><%= user.email %></td>
+        <td><%= user.balance %></td>
+        <td><%= user.created_at %></td>
+        <td><%= link_to "Edit", edit_user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

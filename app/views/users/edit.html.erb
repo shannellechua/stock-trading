@@ -1,0 +1,22 @@
+<h2>Edit a New User</h2>
+
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :balance %><br>
+    <%= form.number_field :balance, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>
