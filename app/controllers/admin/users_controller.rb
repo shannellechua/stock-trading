@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.order(id: :asc)
   end
 
   def show
@@ -33,6 +33,13 @@ class Admin::UsersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private
