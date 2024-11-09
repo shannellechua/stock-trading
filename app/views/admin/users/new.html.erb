@@ -1,6 +1,6 @@
 <h2>Create a New User</h2>
 
-<%= form_with model: @user do |form| %>
+<%= form_with model: [:admin, @user] do |form| %>
   <div>
     <%= form.label :first_name %><br>
     <%= form.text_field :first_name, autofocus: true %>
