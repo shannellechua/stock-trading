@@ -1,0 +1,24 @@
+<h2>Pending Approval</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Approve for trading?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td>
+          <%= form_with(url: approve_admin_user_path(user), method: :patch ) do |form| %>
+            <button>Approve</button>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
