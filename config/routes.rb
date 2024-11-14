@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   
   devise_for :users
+
+  get "admin/users/pending", to: "admin/users#pending"
   root "admin/users#index"
 
   namespace :admin do 
-    resources :users
+    resources :users do
+      member do 
+        patch :approve
+      end
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
