@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  symbol: MyString
+  name: MyString
+  quantity: 1
+  current_price: 1
+  total_value: 1
+
+two:
+  symbol: MyString
+  name: MyString
+  quantity: 1
+  current_price: 1
+  total_value: 1
