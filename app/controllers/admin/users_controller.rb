@@ -42,6 +42,22 @@ class Admin::UsersController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def pending
+    @users = User.where(approved: false)
+  end
+
+  def approve
+    @user = User.find(params[:id])
+
+    if @user.update(approved: true)
+      UserMailer.approve_email(@user).deliver_now
+      flash[:notice] = "User has been approved successfully."
+    else
+      flash[:alert] = "Failed to approve user."
+    end
+    redirect_to admin_users_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :balance)
