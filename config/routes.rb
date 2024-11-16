@@ -24,4 +24,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # get "/stocks", to: "stocks#index"
+  get "/transactions", to: "transactions#index"
+  resources :stocks do
+    collection do
+      get :intraday
+    end
+  end
 end
