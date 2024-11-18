@@ -123,19 +123,11 @@ body {
     color: white;
 }
 
-body {
-    padding-top: 50px; /* Adjust this value to match the banner height */
-}
-
 .page-heading {
     font-size: 2em;
     text-align: center;
 }
 
-.number {
-    font-weight: 600;
-    aspect-ratio: 1;
-}
 
 a {
     color: #306BAC;
@@ -150,17 +142,6 @@ a:visited {
     color: #306BAC;
 }
 
-.articles ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.articles li {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
 .notice {
     background-color: #dff0d8;
     color: #3c763d;
@@ -169,71 +150,6 @@ a:visited {
     border-radius: 5px;
 }
 
-.title {
-    font-size: 56px;
-}
-
-.title-2 {
-    font-size: 42px;
-}
-
 .back {
     padding-top: 2em;
-}
-
-.task-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-.task-date {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-right: 15px;
-    color: #333;
-    flex-shrink: 0;
-}
-
-.task-title {
-    font-size: 1.2em;
-    color: #306BAC;
-    flex-grow: 1;
-}
-
-.index-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.index-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-.index {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-right: 15px;
-    color: #333;
-    flex-shrink: 0;
-}
-
-.index-name {
-    font-size: 1.2em;
-    color: #306BAC;
-    flex-grow: 1;
-}
-
-.index-name a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.index-name a:hover {
-    color: #274a87; /* Darker shade for hover */
 }
