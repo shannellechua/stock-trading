@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def after_sign_in_path_for(resource)
-     if current_user.email == 'maylas02evandel@gmail.com'
+     if current_user.email == 'r4nd0m08na@gmail.com'
        admin_users_path # or the path for your admin page
      elsif current_user.email.present?
        transactions_path # or the path for your trader page

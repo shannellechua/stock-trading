@@ -3,9 +3,9 @@ class CreateStocks < ActiveRecord::Migration[7.2]
     create_table :stocks do |t|
       t.string :symbol
       t.string :name
-      t.integer :quantity
-      t.integer :current_price
-      t.integer :total_value
+      t.integer :price
+      t.integer :inventory
+      t.integer :user_id
 
       t.timestamps
     end

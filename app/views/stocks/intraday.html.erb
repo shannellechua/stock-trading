@@ -16,6 +16,6 @@
 <% end %>
 
 <% if @latest_open_value %>
-    <p> Stock Symbol: <%= @stock_symbol%> </p>
+    <p> Stock Symbol: <%= @stock_symbol.upcase%> </p>
     <p> Stock Price: <%= @latest_open_value%> </p>
 <% end %>
