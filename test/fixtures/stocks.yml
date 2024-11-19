@@ -3,13 +3,13 @@
 one:
   symbol: MyString
   name: MyString
-  quantity: 1
-  current_price: 1
-  total_value: 1
+  price: 1
+  inventory: 1
+  user_id: 1
 
 two:
   symbol: MyString
   name: MyString
-  quantity: 1
-  current_price: 1
-  total_value: 1
+  price: 1
+  inventory: 1
+  user_id: 1

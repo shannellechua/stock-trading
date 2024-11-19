@@ -1,15 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  type: 
+  user_id: 1
+  type_of_transaction: MyString
   symbol: MyString
+  name: MyString
   quantity: 1
-  price: 1
-  total: 1
+  stock_price: 1
+  total_price: 1
 
 two:
-  type: 
+  user_id: 1
+  type_of_transaction: MyString
   symbol: MyString
+  name: MyString
   quantity: 1
-  price: 1
-  total: 1
+  stock_price: 1
+  total_price: 1
