@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>My Portfolio</h1>
+
+  <%= link_to 'Buy New Stocks', intraday_stocks_path %>
+  <%= link_to 'My Transactions', transactions_path %>
+
+  <h3>Cash: <%= @balance %></h3>
+
+  <% if @stocks.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Owned</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stocks.each do |stock| %>
+          <tr>
+            <td><%= stock.symbol.upcase %></td>
+            <td><%= stock.inventory %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div>
+      You don't have any stocks in your portfolio yet. 
+      <%= link_to 'Buy some stocks', intraday_stocks_path %> to get started!
+    </div>
+  <% end %>
+</div>
