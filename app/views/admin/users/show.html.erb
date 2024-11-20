@@ -20,7 +20,7 @@
       <% @transactions.each do |transaction| %>
         <tr>
           <td><%= transaction.id %></td>
-          <td><%= transaction.symbol.upcase %></td>
+          <td><%= transaction.symbol.to_s.upcase %></td>
           <td><%= transaction.quantity %></td>
           <td><%= number_to_currency(transaction.total_price) %></td>
           <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
