@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "admin/users/pending", to: "admin/users#pending"
-  root "admin/users#index"
+  root "transactions#index"
 
   namespace :admin do 
     resources :users do
