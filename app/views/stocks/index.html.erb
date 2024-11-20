@@ -1,0 +1,59 @@
+<%# app/views/stocks/index.html.erb %>
+  <h1>My Portfolio</h1>
+
+  <%= link_to 'Buy New Stocks', intraday_stocks_path, class: 'btn btn-primary mb-3' %>
+  <%= link_to 'All of my Transactions', transactions_path, class: 'btn btn-secondary mb-3' %>
+
+  <% if @stocks.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Current Price</th>
+          <th>Shares Owned</th>
+          <th>Total Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stocks.each do |stock| %>
+          <tr>
+            <td><%= stock.symbol.upcase %></td>
+            <td>$<%= number_with_precision(stock.price, precision: 2) %></td>
+            <td><%= stock.inventory %></td>
+            <td>$<%= number_with_precision(stock.price * stock.inventory, precision: 2) %></td>
+            <td>
+              <%= form_with url: sell_stocks_path, method: :post, local: true do |form| %>
+                <%= form.hidden_field :symbol, value: stock.symbol %>
+                <%= form.hidden_field :price, value: stock.price %>
+                <div class="input-group">
+                  <%= form.number_field :quantity, 
+                      min: 1, 
+                      max: stock.inventory, 
+                      required: true,
+                      class: 'form-control',
+                      placeholder: 'Qty' %>
+                  <%= form.submit "Sell", class: 'btn btn-danger' %>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4"><strong>Total Portfolio Value:</strong></td>
+          <td colspan="2">
+            <strong>
+              $<%= number_with_precision(@stocks.sum { |stock| stock.price * stock.inventory }, precision: 2) %>
+            </strong>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  <% else %>
+    <div class="alert alert-info">
+      You don't have any stocks in your portfolio yet. 
+      <%= link_to 'Buy some stocks', intraday_stocks_path %> to get started!
+    </div>
+  <% end %>
