@@ -1,4 +1,6 @@
 class StocksController < ApplicationController
+  before_action :check_approval, only: [:buy, :sell]
+
   def index
     @stocks = current_user.stocks
     @balance = current_user.balance
@@ -106,4 +108,9 @@ class StocksController < ApplicationController
     redirect_to intraday_stocks_path(symbol: stock_symbol)
   end
   
+  def check_approval
+    unless current_user.approved?
+      redirect_to intraday_stocks_path, alert: "You are not yet approved to perform this action."
+    end
+  end
 end
