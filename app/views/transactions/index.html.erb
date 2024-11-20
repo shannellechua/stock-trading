@@ -1,5 +1,3 @@
-<h1>Transactions#index</h1>
-
 <h2>My Transactions</h2>
 
 <% if @transactions.present? %>
@@ -18,9 +16,9 @@
       <% @transactions.each do |transaction| %>
         <tr>
           <td><%= transaction.id %></td>
-          <td><%= transaction.symbol.upcase %></td>
+          <td><%= transaction.symbol.to_s.upcase %></td>
           <td><%= transaction.quantity %></td>
-          <td><%= number_to_currency(transaction.total_price) %></td>
+          <td><%= number_to_currency(transaction.stock_price) %></td>
           <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
           <td><%= transaction.type_of_transaction %></td>
         </tr>

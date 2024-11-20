@@ -19,3 +19,19 @@
     <p> Stock Symbol: <%= @stock_symbol.upcase%> </p>
     <p> Stock Price: <%= @latest_open_value%> </p>
 <% end %>
+
+<%= form_with url: buy_stocks_path, method: :post, local: true do |form| %>
+    <%= form.hidden_field :symbol, value: @stock_symbol %>
+    <%= form.hidden_field :price, value: @latest_open_value %>
+    <%= form.label :quantity, "Quantity to Buy:" %>
+    <%= form.number_field :quantity, min: 1, required: true %>
+    <%= form.submit "Buy" %>
+  <% end %>
+
+<%= form_with url: sell_stocks_path, method: :post, local: true do |form| %>
+    <%= form.hidden_field :symbol, value: @stock_symbol %>
+    <%= form.hidden_field :price, value: @latest_open_value %>
+    <%= form.label :quantity, "Quantity to Sell:" %>
+    <%= form.number_field :quantity, min: 1, required: true %>
+    <%= form.submit "Sell" %>
+  <% end %>
