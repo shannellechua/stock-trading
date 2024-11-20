@@ -2,5 +2,34 @@
 
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
-<p>Balance: <%= @user.balance %></p>
+<h2>Balance: <%= @user.balance %></h2>
+
+<% if @transactions.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Symbol</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction.id %></td>
+          <td><%= transaction.symbol.upcase %></td>
+          <td><%= transaction.quantity %></td>
+          <td><%= number_to_currency(transaction.total_price) %></td>
+          <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
+          <td><%= transaction.type_of_transaction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No transactions found.</p>
+<% end %>
 
