@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   resources :stocks do
     collection do
       get :intraday
+      post :buy
+      post :sell
     end
   end
+
 end
