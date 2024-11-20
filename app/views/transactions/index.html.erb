@@ -1,5 +1,8 @@
 <h2>My Transactions</h2>
 
+<%= link_to 'My Portfolio', stocks_path %>
+ <%= link_to 'Trade Stocks', intraday_stocks_path %>
+
 <% if @transactions.present? %>
   <table>
     <thead>
@@ -28,5 +31,3 @@
 <% else %>
   <p>No transactions found.</p>
 <% end %>
-
-<%= link_to 'My Stocks', intraday_stocks_path %>
