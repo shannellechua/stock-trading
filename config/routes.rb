@@ -3,12 +3,16 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "admin/users/pending", to: "admin/users#pending"
-  root "transactions#index"
+  
+  root "stocks#index"
 
   namespace :admin do 
     resources :users do
       member do 
         patch :approve
+      end
+      collection do
+        get :transactions 
       end
     end
   end

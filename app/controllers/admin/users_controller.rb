@@ -42,7 +42,7 @@ module Admin
       @user = User.find(params[:id])
       @user.destroy
       flash[:notice] = "The user has been removed from TraderBlue."
-      redirect_to users_admin_path, status: :see_other
+      redirect_to admin_users_path, status: :see_other
     end
 
     def pending
@@ -59,6 +59,10 @@ module Admin
         flash[:alert] = "Failed to approve user."
       end
       redirect_to admin_users_path
+    end
+
+    def transactions
+      @transactions = Transaction.all
     end
 
     private

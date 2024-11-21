@@ -1,0 +1,36 @@
+<div class="container">
+    <%= link_to "< Back", admin_users_path %>   
+
+  <h2>All Transactions</h2>
+  
+  <% if @transactions.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Symbol</th>
+          <th>Quantity</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @transactions.each do |transaction| %>
+          <tr>
+            <td><%= transaction.id %></td>
+            <td><%= transaction.user_id %></td>
+            <td><%= transaction.symbol.to_s.upcase %></td>
+            <td><%= transaction.quantity %></td>
+            <td><%= number_to_currency(transaction.stock_price) %></td>
+            <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
+            <td><%= transaction.type_of_transaction %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No transactions found.</p>
+  <% end %>
+</div>
