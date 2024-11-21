@@ -1,33 +1,35 @@
-<h2>My Transactions</h2>
+<div class="container">
+   <%= link_to 'My Portfolio', stocks_path, class: "button" %> 
+  <%= link_to 'Trade Stocks', intraday_stocks_path, class: "button" %>
 
-<%= link_to 'My Portfolio', stocks_path %>
- <%= link_to 'Trade Stocks', intraday_stocks_path %>
-
-<% if @transactions.present? %>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Symbol</th>
-        <th>Quantity</th>
-        <th>Amount</th>
-        <th>Date</th>
-        <th>Type</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @transactions.each do |transaction| %>
+  <h2>My Transactions</h2>
+  
+  <% if @transactions.present? %>
+    <table>
+      <thead>
         <tr>
-          <td><%= transaction.id %></td>
-          <td><%= transaction.symbol.to_s.upcase %></td>
-          <td><%= transaction.quantity %></td>
-          <td><%= number_to_currency(transaction.stock_price) %></td>
-          <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
-          <td><%= transaction.type_of_transaction %></td>
+          <th>ID</th>
+          <th>Symbol</th>
+          <th>Quantity</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Type</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No transactions found.</p>
-<% end %>
+      </thead>
+      <tbody>
+        <% @transactions.each do |transaction| %>
+          <tr>
+            <td><%= transaction.id %></td>
+            <td><%= transaction.symbol.to_s.upcase %></td>
+            <td><%= transaction.quantity %></td>
+            <td><%= number_to_currency(transaction.stock_price) %></td>
+            <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
+            <td><%= transaction.type_of_transaction %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No transactions found.</p>
+  <% end %>
+</div>

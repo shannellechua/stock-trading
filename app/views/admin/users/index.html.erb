@@ -1,35 +1,41 @@
-<h1>Admin View</h1>
-<%= link_to "Create New User", new_admin_user_path %> 
-<%= link_to "Approve Pending Users", admin_users_pending_path %> 
+<div class="container">  
+  <h1>TraderBlue Admin</h1>
+  <div style = "margin-bottom: 20px">
+    <%= link_to "Create New User", new_admin_user_path, class:"button"%> 
+    <%= link_to "Approve Pending Users", admin_users_pending_path, class:"button"%> 
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Balance</th>
-      <th>Created At</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+  <table>
+    <thead>
       <tr>
-
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.balance %></td>
-        <td><%= user.created_at %></td>
-        <td>
-          <%= link_to "Show", admin_user_path(user) %>
-          <%= link_to "Edit", edit_admin_user_path(user) %>
-          <%= link_to "Delete", admin_user_path(user), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
-        </td>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Balance</th>
+        <th>Created At</th>
+        <th>Actions</th>
       </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
 
-    <% end %>
-  </tbody>
-</table>
+          <td><%= user.id %></td>
+          <td>
+           <%= link_to user.email, admin_user_path(user) %>
+         
+          </td>
+          <td><%= user.balance %></td>
+          <td><%= user.created_at %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_user_path(user) %> |
+            <%= link_to "Delete", admin_user_path(user), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %>
+          </td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+</div>

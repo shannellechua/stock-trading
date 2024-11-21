@@ -55,7 +55,7 @@ class StocksController < ApplicationController
 
         current_user.update!(balance: current_user.balance - total_price)
 
-        flash[:notice] = "Transaction successful!"
+        flash[:notice] = "Purchase successful!"
       else
         flash[:alert] = "Unable to fetch stock data. Please try again."
       end
