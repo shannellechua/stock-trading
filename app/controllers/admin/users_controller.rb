@@ -31,6 +31,7 @@ module Admin
       @user = User.find(params[:id])
 
       if @user.update(user_params)
+        flash[:notice] = "The user has been edited!"
         redirect_to admin_user_path
       else
         render :edit, status: :unprocessable_entity
@@ -40,8 +41,8 @@ module Admin
     def destroy
       @user = User.find(params[:id])
       @user.destroy
-
-      redirect_to root_path, status: :see_other
+      flash[:notice] = "The user has been removed from TraderBlue."
+      redirect_to admin_users_path, status: :see_other
     end
 
     def pending
@@ -53,11 +54,15 @@ module Admin
 
       if @user.update(approved: true)
         UserMailer.approve_email(@user).deliver_now
-        flash[:notice] = "User has been approved successfully."
+        flash[:notice] = "User has been approved to trade on TraderBlue."
       else
         flash[:alert] = "Failed to approve user."
       end
       redirect_to admin_users_path
+    end
+
+    def transactions
+      @transactions = Transaction.all
     end
 
     private

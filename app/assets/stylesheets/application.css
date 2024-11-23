@@ -29,17 +29,6 @@ body {
     margin-bottom: 20px;
 }
 
-.button {
-    width: 100%;
-    background-color: #306BAC;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
 .button:hover {
     background-color: #274a87;
 }
@@ -59,8 +48,8 @@ input[type="submit"] {
     display: inline-block;
     background-color: #306BAC;
     color: white;
-    padding: 10px 20px;
-    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
     border: none;
@@ -74,16 +63,26 @@ form label {
     font-weight: 500;
 }
 
-body {
-    width: 50%;
-    max-width: 1000px;
-    margin: 0 auto;
-    font-size: 16px;
+.container {
+    background-color: white;
+    padding: 30px;
+    margin: 0 auto; 
+    margin-top: 10vh; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    text-align: left;
 }
 
 .banner {
-    background-color: black;
-    color: white;
     padding: 10px;
     width: 100%;
     position: fixed;
@@ -119,6 +118,17 @@ body {
     background-color: #274a87; /* Darker shade for hover */
 }
 
+.button {
+    width: 100%;
+    background-color: #306BAC;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 .button:visited {
     color: white;
 }
@@ -142,14 +152,22 @@ a:visited {
     color: #306BAC;
 }
 
-.notice {
-    background-color: #dff0d8;
-    color: #3c763d;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-}
+.alert {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    padding: 1%; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    max-width: 90%; 
+    background-color: #f8d7da; 
+    color: #721c24;
+  }
+  
+  .notice {
+    background-color: #d4edda; 
+    color: #155724; 
+  }
 
-.back {
-    padding-top: 2em;
-}
+  

@@ -1,37 +1,41 @@
-<h1>Stocks#index</h1>
+<div class="container">
+  <%= link_to 'My Portfolio', stocks_path, class: "button"%> 
+  <%= link_to 'My Transactions', transactions_path, class: "button" %>
+  <h1>Trade stocks</h1>
 
-<h1>My Portfolio</h1>
+  <h3>Cash: <%= @balance %></h3>
 
-<%= link_to 'All of my Transactions', transactions_path %>
+  <%= form_with url: intraday_stocks_path, method: :get, local: true do |form|%>
 
+  <%= form.label :symbol, "Enter Stock Symbol (e.g., MSFT)" %>
+  <%= form.text_field :symbol, required: true %>
+  <%= form.submit "Search Stock" %>
 
-<h1>Intraday Stocks Data</h1>
-
-<%= form_with url: intraday_stocks_path, method: :get, local: true do |form|%>
-
-<%= form.label :symbol, "Enter Stock Symbol (e.g., MSFT)" %>
-<%= form.text_field :symbol, required: true %>
-<%= form.submit "Search Stock" %>
-
-<% end %>
-
-<% if @latest_open_value %>
-    <p> Stock Symbol: <%= @stock_symbol.upcase%> </p>
-    <p> Stock Price: <%= @latest_open_value%> </p>
-<% end %>
-
-<%= form_with url: buy_stocks_path, method: :post, local: true do |form| %>
-    <%= form.hidden_field :symbol, value: @stock_symbol %>
-    <%= form.hidden_field :price, value: @latest_open_value %>
-    <%= form.label :quantity, "Quantity to Buy:" %>
-    <%= form.number_field :quantity, min: 1, required: true %>
-    <%= form.submit "Buy" %>
   <% end %>
 
-<%= form_with url: sell_stocks_path, method: :post, local: true do |form| %>
-    <%= form.hidden_field :symbol, value: @stock_symbol %>
-    <%= form.hidden_field :price, value: @latest_open_value %>
-    <%= form.label :quantity, "Quantity to Sell:" %>
-    <%= form.number_field :quantity, min: 1, required: true %>
-    <%= form.submit "Sell" %>
+  <% if @latest_open_value %>
+      <p> Stock Symbol: <%= @stock_symbol.upcase%> </p>
+      <p> Stock Price: <%= @latest_open_value%> </p>
+      <p>Owned: <%= @inventory %></p>
   <% end %>
+
+      <%= form_with url: buy_stocks_path, method: :post, local: true do |form| %>
+      <%= form.hidden_field :symbol, value: @stock_symbol %>
+      <%= form.hidden_field :price, value: @latest_open_value %>
+      <%= form.label :quantity, "Quantity to Buy:" %>
+      <%= form.number_field :quantity, min: 1, required: true %>
+      <%= form.submit "Buy" %>
+    <% end %>
+
+    <%= form_with url: sell_stocks_path, method: :post, local: true do |form| %>
+      <%= form.hidden_field :symbol, value: @stock_symbol %>
+      <%= form.hidden_field :price, value: @latest_open_value %>
+      <%= form.label :quantity, "Quantity to Sell:" %>
+      <%= form.number_field :quantity, min: 1, required: true %>
+      <%= form.submit "Sell" %>
+    <% end %>
+</div>
+
+
+
+
